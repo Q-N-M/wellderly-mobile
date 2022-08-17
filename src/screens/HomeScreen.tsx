@@ -1,10 +1,12 @@
-import { StyleSheet } from "react-native";
-
+import React from "react";
+import { Button, StyleSheet } from "react-native";
 import EditScreenInfo from "../components/EditScreenInfo";
 import { Text, View } from "../components/Themed";
 import { RootTabScreenProps } from "../types/navigation";
+import { useNavigation } from "@react-navigation/core";
 
 export default function HomeScreen({ navigation }: RootTabScreenProps<"Home">) {
+  const nav = useNavigation();
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Home</Text>
@@ -13,7 +15,11 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<"Home">) {
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
-      <EditScreenInfo path="/screens/HomeScreen.tsx" />
+      <Button
+        title="testing login"
+        onPress={() => nav.navigate("Auth", { screen: "Login" })}
+      />
+      {/* <EditScreenInfo path="/screens/HomeScreen.tsx" /> */}
     </View>
   );
 }

@@ -2,7 +2,9 @@ import { StyleSheet } from "react-native";
 import { Text, View } from "../../components/Themed";
 import { AuthStackScreenProps } from "../../types/navigation";
 
-const LoginScreen = ({ navigation }: AuthStackScreenProps<"Login">) => {
+const OnboardingThreeScreen = ({
+  navigation,
+}: AuthStackScreenProps<"OnboardingThree">) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Yey Success!!!!</Text>
@@ -10,7 +12,7 @@ const LoginScreen = ({ navigation }: AuthStackScreenProps<"Login">) => {
   );
 };
 
-export default LoginScreen;
+export default OnboardingThreeScreen;
 
 const styles = StyleSheet.create({
   container: {

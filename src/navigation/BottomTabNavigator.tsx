@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import HomeScreen from "../screens/HomeScreen";
-import MessagesScreen from "../screens/Messages";
+import MessagesScreen from "../screens/MessagesScreen";
 import { RootTabParamList, RootTabScreenProps } from "../types/navigation/";
 import { Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";

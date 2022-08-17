@@ -2,7 +2,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 export type AuthStackParamList = {
   Login: undefined;
-  Signup: undefined;
+  Register: undefined;
   OnboardingOne: undefined;
   OnboardingTwo: undefined;
   OnboardingThree: undefined;
@@ -13,6 +13,7 @@ export type AuthStackParamList = {
   UrgerContact: undefined;
   Interest: undefined;
   OnboardingFour: undefined;
+  Finish: undefined;
 };
 
 export type AuthStackScreenProps<Screen extends keyof AuthStackParamList> =
