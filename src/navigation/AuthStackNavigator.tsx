@@ -37,7 +37,7 @@ const AuthStackNavigator = () => {
         options={{ headerShown: false }}
       />
       <AuthStack.Screen
-        name="OnboardingOne"
+        name="OnboardingThree"
         component={OnboardingThreeScreen}
         options={{ headerShown: false }}
       />
