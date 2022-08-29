@@ -6,6 +6,7 @@ type props = {
   colors: string;
   func: () => void;
 };
+
 const ButtonComponent = ({ text, colors, func }: props) => {
   return (
     <TouchableOpacity
