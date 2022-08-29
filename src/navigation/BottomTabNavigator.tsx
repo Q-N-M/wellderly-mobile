@@ -2,12 +2,11 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import HomeScreen from "../screens/HomeScreen";
-import MessagesScreen from "../screens/MessagesScreen";
 import { RootTabParamList, RootTabScreenProps } from "../types/navigation/";
 import { Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import ActivitiesScreen from "../screens/ActivitiesScreen";
-import ProfileScreen from "../screens/ProfileScreen";
+import ActivitiesScreen from "../screens/activities/ActivitiesScreen";
+import ProfileScreen from "../screens/profile/ProfileScreen";
 /**
  * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
  * https://reactnavigation.org/docs/bottom-tab-navigator

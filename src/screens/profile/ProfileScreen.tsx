@@ -1,21 +1,21 @@
 import { StyleSheet } from "react-native";
 
-import EditScreenInfo from "../components/EditScreenInfo";
-import { Text, View } from "../components/Themed";
-import { RootTabScreenProps } from "../types/navigation";
+import EditScreenInfo from "../../components/EditScreenInfo";
+import { Text, View } from "../../components/Themed";
+import { RootTabScreenProps } from "../../types/navigation";
 
-export default function ActivitiesScreen({
+export default function ProfileScreen({
   navigation,
-}: RootTabScreenProps<"Activities">) {
+}: RootTabScreenProps<"Profile">) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Activities</Text>
+      <Text style={styles.title}>Profile</Text>
       <View
         style={styles.separator}
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
-      <EditScreenInfo path="/screens/ActivitiesScreen.tsx" />
+      <EditScreenInfo path="/screens/ProfileScreen.tsx" />
     </View>
   );
 }

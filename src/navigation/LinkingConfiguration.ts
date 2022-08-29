@@ -20,19 +20,14 @@ const linking: LinkingOptions<RootStackParamList> = {
               HomeScreen: 'one',
             },
           },
-          Messages: {
-            screens: {
-              MessagesScreen: 'two',
-            },
-          },
           Activities: {
             screens: {
-              ActivitiesScreen: 'three',
+              ActivitiesScreen: 'two',
             },
           },
           Profile: {
             screens: {
-              ProfileScreen: 'four',
+              ProfileScreen: 'three',
             },
           },
         },
