@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, StyleSheet } from "react-native";
-import EditScreenInfo from "../components/EditScreenInfo";
 import { Text, View } from "../components/Themed";
 import { RootTabScreenProps } from "../types/navigation";
 import { useNavigation } from "@react-navigation/core";
@@ -16,10 +15,9 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<"Home">) {
         darkColor="rgba(255,255,255,0.1)"
       />
       <Button
-        title="testing login"
-        onPress={() => nav.navigate("Auth", { screen: "Login" })}
+        title="mood tracker"
+        onPress={() => nav.navigate("MoodTracker")}
       />
-      {/* <EditScreenInfo path="/screens/HomeScreen.tsx" /> */}
     </View>
   );
 }

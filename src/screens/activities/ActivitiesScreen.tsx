@@ -1,18 +1,21 @@
 import { StyleSheet } from "react-native";
 
-import EditScreenInfo from "../components/EditScreenInfo";
-import { Text, View } from "../components/Themed";
+import EditScreenInfo from "../../components/EditScreenInfo";
+import { Text, View } from "../../components/Themed";
+import { RootTabScreenProps } from "../../types/navigation";
 
-export default function MessagesScreen() {
+export default function ActivitiesScreen({
+  navigation,
+}: RootTabScreenProps<"Activities">) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Messages</Text>
+      <Text style={styles.title}>Activities</Text>
       <View
         style={styles.separator}
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
-      <EditScreenInfo path="/screens/MessagesScreen.tsx" />
+      <EditScreenInfo path="/screens/ActivitiesScreen.tsx" />
     </View>
   );
 }

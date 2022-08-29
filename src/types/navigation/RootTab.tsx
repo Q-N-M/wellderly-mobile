@@ -5,7 +5,6 @@ import { RootStackParamList } from "./RootStack";
 
 export type RootTabParamList = {
   Home: undefined;
-  Messages: undefined;
   Activities: undefined;
   Profile: undefined;
 };
