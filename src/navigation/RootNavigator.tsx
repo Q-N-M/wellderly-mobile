@@ -5,7 +5,6 @@ import MoodTrackerScreen from "../screens/MoodTrackerScreen";
 import { RootStackParamList } from "../types/navigation";
 import BottomTabNavigator from "./BottomTabNavigator";
 import AuthStackNavigator from "./AuthStackNavigator";
-import HomeStackNavigator from "./HomeStackNavigator";
 
 /**
  * A root stack navigator is often used for displaying modals on top of all other content.
@@ -31,11 +30,6 @@ export default function RootNavigator() {
         component={AuthStackNavigator}
         options={{ headerShown: false }}
       />
-      {/* <RootStack.Screen
-        name="Home"
-        component={HomeStackNavigator}
-        // options={{ headerShown: false }}
-      /> */}
       <RootStack.Screen
         name="MoodTracker"
         component={MoodTrackerScreen}
