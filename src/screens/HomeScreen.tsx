@@ -1,32 +1,41 @@
 import React from "react";
-import { Button, StyleSheet, ScrollView } from "react-native";
+import { Button, StyleSheet, ScrollView, Image } from "react-native";
 import { Text, View } from "../components/Themed";
 import { RootTabScreenProps } from "../types/navigation";
 import { useNavigation } from "@react-navigation/core";
 import ActivitiesCardsComponent from "../components/ActivitiesCardsComponent";
 import ButtonComponent from "../components/ButtonComponent";
+import art from "../assets/images/art.png"
+import cooking from "../assets/images/cooking.png"
+import music from "../assets/images/music.png"
+import sport from "../assets/images/sport.png"
+
+const artImage = Image.resolveAssetSource(art).uri
+const cookingImage = Image.resolveAssetSource(cooking).uri
+const musicImage = Image.resolveAssetSource(music).uri
+const sportImage = Image.resolveAssetSource(sport).uri;
 
 // dummy data
 const activities = [
   {
-    name: "knitting",
+    name: "Knitting Workshop",
     description: "knitting description",
+    image: artImage,
   },
   {
-    name: "watching tv",
-    description: "watching tv description",
+    name: "BBQ Cook-Off",
+    description: "bbq description",
+    image: cookingImage, 
   },
   {
-    name: "knitting",
-    description: "knitting description",
+    name: "Live Music",
+    description: "music description",
+    image: musicImage,
   },
   {
-    name: "watching tv",
-    description: "watching tv description",
-  },
-  {
-    name: "watching tv",
-    description: "watching tv description",
+    name: "Soccet Match",
+    description: "soccer description",
+    image: sportImage,
   },
 ];
 
@@ -38,6 +47,8 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<"Home">) {
       <ActivitiesCardsComponent
         name={activity.name}
         description={activity.description}
+        image={activity.image}
+        key={key}
       />
     ));
   };
@@ -49,15 +60,9 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<"Home">) {
         <Text>Blue Care Tangara Retirement Village</Text>
       </View>
       <ScrollView contentContainerStyle={styles.containerScrollView}>
-        <View
-          style={styles.separator}
-          lightColor="#eee"
-          darkColor="rgba(255,255,255,0.1)"
-        />
-
-        <View style={styles.marginActivity}></View>
-        <View>
-          <Text>Activities</Text>
+        <View style={styles.secondTopView}>
+          <Text>Today's Activities</Text>
+          <Text>&nbsp;see more</Text>
         </View>
         <View>
           {activities.length != 0 ? (
@@ -66,12 +71,6 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<"Home">) {
             <Text>No activities yet</Text>
           )}
         </View>
-        <View
-          style={styles.separator}
-          lightColor="#eee"
-          darkColor="rgba(255,255,255,0.1)"
-        />
-        <View></View>
       </ScrollView>
       <View style={styles.buttonStyle}>
         <ButtonComponent
@@ -90,13 +89,21 @@ const styles = StyleSheet.create({
   },
   containerScrollView: {
     flexGrow: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    // flexDirection: "row",
+    // flexWrap: 'wrap',
+    // alignItems: "center",
+    // justifyContent: "center",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
   topView: {
     padding: "5%",
+  },
+  secondTopView: {
+    padding: "5%",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    textAlign: "center",
   },
   marginActivity: {
     margin: 20,

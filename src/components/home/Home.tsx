@@ -1,10 +1,10 @@
-import { View } from "./Themed";
+import { View } from "../Themed";
 import { Button, Image, TouchableOpacity, Text } from "react-native";
 
-const art = require("../assets/images/art.png");
-const cooking = require("../assets/images/cooking.png");
-const music = require("../assets/images/music.png");
-const sport = require("../assets/images/sport.png");
+const art = require("../../assets/images/art.png");
+const cooking = require("../../assets/images/cooking.png");
+const music = require("../../assets/images/music.png");
+const sport = require("../../assets/images/sport.png");
 
 export default function Home() {
   return (
