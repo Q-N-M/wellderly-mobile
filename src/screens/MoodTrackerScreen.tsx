@@ -7,6 +7,7 @@ const MoodTrackerScreen = ({
   navigation,
 }: RootStackScreenProps<"MoodTracker">) => {
   const [date, setDate] = useState("");
+  const [selected, setSelected] = useState("");
   let months = [
     "January",
     "February",
@@ -63,33 +64,33 @@ const MoodTrackerScreen = ({
       <Text style={styles.title}>How are you feeling today?</Text>
       <Text style={styles.dateText}>{date}</Text>
       <View style={styles.wrapper}>
-        <TouchableOpacity>
+        <TouchableOpacity  onPress={() => setSelected("angry")}>
           <Image
-            style={styles.imageOnClick}
+            style={ selected === "angry" ? styles.imageOnClick : styles.imageNotOnClick}
             source={require("../assets/images/Angry.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => setSelected("sad")}>
           <Image
-            style={styles.imageOnClick}
+            style={ selected === "sad" ? styles.imageOnClick : styles.imageNotOnClick}
             source={require("../assets/images/Sad.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => setSelected("flat")}>
           <Image
-            style={styles.imageOnClick}
+            style={ selected === "flat" ? styles.imageOnClick : styles.imageNotOnClick}
             source={require("../assets/images/Flat.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => setSelected("smile")}>
           <Image
-            style={styles.imageOnClick}
+            style={ selected === "smile" ? styles.imageOnClick : styles.imageNotOnClick}
             source={require("../assets/images/Smile.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => setSelected("happy")}>
           <Image
-            style={styles.imageOnClick}
+            style={ selected === "happy" ? styles.imageOnClick : styles.imageNotOnClick}
             source={require("../assets/images/Happy.png")}
           />
         </TouchableOpacity>
@@ -157,5 +158,8 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     borderColor: "#247CE2",
     borderRadius: 30,
+  },
+  imageNotOnClick: {
+
   },
 });
