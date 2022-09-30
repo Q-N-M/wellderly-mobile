@@ -4,6 +4,7 @@ import {
   TextInput,
   Image,
   Alert,
+  Modal,
 } from "react-native";
 import { Text, View } from "../components/Themed";
 import { RootStackScreenProps } from "../types/navigation";
@@ -16,6 +17,7 @@ const MoodTrackerScreen = ({
   const nav = useNavigation();
   const [date, setDate] = useState("");
   const [selected, setSelected] = useState("");
+  const [modalVisible, setModalVisible] = useState(false);
   let months = [
     "January",
     "February",
@@ -57,18 +59,23 @@ const MoodTrackerScreen = ({
   }, []);
 
   const handlePress = () => {
-    Alert.alert("Udahkan?", "", [
-      {
-        text: "No",
-        onPress: () => console.log("Cancel Pressed"),
-        style: "cancel",
-      },
-      {
-        text: "Yes",
-        // onPress: () => console.log("pressed"),
-        onPress: () => nav.navigate("Submitted"),
-      },
-    ]);
+    if (selected === "") {
+      setModalVisible(true);
+    } else {
+      Alert.alert("Udahkan?", "", [
+        {
+          text: "No",
+          // onPress: () => setModalVisible(true),
+          onPress: () => console.log(selected),
+          style: "cancel",
+        },
+        {
+          text: "Yes",
+          // onPress: () => console.log("pressed"),
+          onPress: () => nav.navigate("Submitted"),
+        },
+      ]);
+    }
   };
 
   return (
@@ -134,6 +141,36 @@ const MoodTrackerScreen = ({
       <TouchableOpacity style={styles.buttonContainer} onPress={handlePress}>
         <Text style={styles.ButtonText}>Submit</Text>
       </TouchableOpacity>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <View style={styles.imageContainer}>
+              <Image
+                style={styles.warningImage}
+                source={require("../assets/images/Warning.png")}
+              />
+            </View>
+            <Text style={styles.warningTitle}>Uh-Oh!</Text>
+            <Text style={styles.warningText}>
+              Please pick a mood before submitting the form
+            </Text>
+            <TouchableOpacity
+              style={[styles.warningButton]}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text style={styles.ButtonText}>Ok</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -154,6 +191,17 @@ const styles = StyleSheet.create({
     fontSize: 55,
     fontWeight: "400",
     fontStyle: "italic",
+  },
+  imageOnClick: {
+    borderWidth: 10,
+    borderColor: "#247CE2",
+    borderRadius: 100,
+    width: 150,
+    height: 150,
+  },
+  imageNotOnClick: {
+    width: 150,
+    height: 150,
   },
   forms: {
     width: "100%",
@@ -180,12 +228,50 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
   },
-  imageOnClick: {
-    borderWidth: 10,
-    borderColor: "#247CE2",
-    borderRadius: 100,
-    width: 150,
-    height: 150,
+  imageContainer: {
+    marginTop: 80,
+    marginBottom: 30,
+    alignItems: "center",
   },
-  imageNotOnClick: { width: 150, height: 150 },
+  warningImage: {
+    width: 195,
+    height: 180,
+  },
+  warningTitle: {
+    fontSize: 50,
+    fontWeight: "bold",
+    alignSelf: "center",
+  },
+  warningText: {
+    fontSize: 30,
+    alignSelf: "center",
+  },
+  warningButton: {
+    elevation: 8,
+    backgroundColor: "#247CE2",
+    borderRadius: 10,
+    paddingVertical: 25,
+    marginVertical: 40,
+    marginHorizontal: 200,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: "#3D3D3D",
+  },
+  modalView: {
+    flex: 1,
+    margin: 82,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
 });

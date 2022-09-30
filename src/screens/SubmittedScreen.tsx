@@ -19,10 +19,13 @@ const SubmittedScreen = ({ navigation }: RootStackScreenProps<"Submitted">) => {
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
-        <Image source={require("../assets/images/submitted.png")} />
+        <Image
+          style={styles.image}
+          source={require("../assets/images/submitted.png")}
+        />
       </View>
       <Text style={styles.title}>You have submitted your mood of the day!</Text>
-      <Text style={styles.timer}>{number}</Text>
+      {/* <Text style={styles.timer}>{number}</Text> */}
       {/* <TouchableOpacity
         style={styles.buttonContainer}
         onPress={() => nav.navigate("MoodTracker")}
@@ -42,8 +45,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 34,
   },
   title: {
-    fontSize: 24,
-    fontWeight: "bold",
+    fontSize: 48,
     textAlign: "center",
   },
   timer: {
@@ -51,6 +53,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     paddingTop: 30,
+  },
+  image: {
+    width: 342,
+    height: 433,
   },
   forms: {
     width: "100%",
