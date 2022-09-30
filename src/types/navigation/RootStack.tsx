@@ -8,6 +8,7 @@ export type RootStackParamList = {
   NotFound: undefined;
   Auth: NavigatorScreenParams<AuthStackParamList>;
   MoodTracker: undefined;
+  Submitted: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =

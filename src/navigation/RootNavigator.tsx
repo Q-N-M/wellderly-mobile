@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import MoodTrackerScreen from "../screens/MoodTrackerScreen";
+import SubmittedScreen from "../screens/SubmittedScreen";
 import { RootStackParamList } from "../types/navigation";
 import BottomTabNavigator from "./BottomTabNavigator";
 import AuthStackNavigator from "./AuthStackNavigator";
@@ -33,6 +34,11 @@ export default function RootNavigator() {
       <RootStack.Screen
         name="MoodTracker"
         component={MoodTrackerScreen}
+        options={{ headerShown: false }}
+      />
+      <RootStack.Screen
+        name="Submitted"
+        component={SubmittedScreen}
         options={{ headerShown: false }}
       />
 
