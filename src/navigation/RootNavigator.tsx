@@ -30,11 +30,6 @@ export default function RootNavigator() {
         component={AuthStackNavigator}
         options={{ headerShown: false }}
       />
-      {/* <RootStack.Screen
-        name="Home"
-        component={HomeStackNavigator}
-        // options={{ headerShown: false }}
-      /> */}
       <RootStack.Screen
         name="MoodTracker"
         component={MoodTrackerScreen}

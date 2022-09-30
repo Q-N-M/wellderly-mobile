@@ -18,7 +18,7 @@ const ButtonComponent = ({ text, colors, func }: props) => {
       ]}
       onPress={() => func()}
     >
-      <Text style={styles.text}>Halo</Text>
+      <Text style={styles.text}>{text}</Text>
     </TouchableOpacity>
   );
 };
