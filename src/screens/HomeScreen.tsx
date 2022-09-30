@@ -5,14 +5,14 @@ import { RootTabScreenProps } from "../types/navigation";
 import { useNavigation } from "@react-navigation/core";
 import ActivitiesCardsComponent from "../components/ActivitiesCardsComponent";
 import ButtonComponent from "../components/ButtonComponent";
-import art from "../assets/images/art.png"
-import cooking from "../assets/images/cooking.png"
-import music from "../assets/images/music.png"
-import sport from "../assets/images/sport.png"
+import art from "../assets/images/art.png";
+import cooking from "../assets/images/cooking.png";
+import music from "../assets/images/music.png";
+import sport from "../assets/images/sport.png";
 
-const artImage = Image.resolveAssetSource(art).uri
-const cookingImage = Image.resolveAssetSource(cooking).uri
-const musicImage = Image.resolveAssetSource(music).uri
+const artImage = Image.resolveAssetSource(art).uri;
+const cookingImage = Image.resolveAssetSource(cooking).uri;
+const musicImage = Image.resolveAssetSource(music).uri;
 const sportImage = Image.resolveAssetSource(sport).uri;
 
 // dummy data
@@ -25,7 +25,7 @@ const activities = [
   {
     name: "BBQ Cook-Off",
     description: "bbq description",
-    image: cookingImage, 
+    image: cookingImage,
   },
   {
     name: "Live Music",
