@@ -4,6 +4,7 @@ import { RootStackScreenProps } from "../types/navigation";
 import React, { useState, useEffect, Component } from "react";
 import { useNavigation } from "@react-navigation/core";
 import MoodTracker from "./MoodTrackerScreen";
+import { scale } from "react-native-size-matters";
 
 const SubmittedScreen = ({ navigation }: RootStackScreenProps<"Submitted">) => {
   const nav = useNavigation();
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 34,
   },
   title: {
-    fontSize: 48,
+    fontSize: scale(16),
     textAlign: "center",
   },
   timer: {
@@ -55,8 +56,8 @@ const styles = StyleSheet.create({
     paddingTop: 30,
   },
   image: {
-    width: 342,
-    height: 433,
+    width: scale(100),
+    height: scale(125),
   },
   forms: {
     width: "100%",

@@ -7,6 +7,7 @@ import {
   Modal,
 } from "react-native";
 import { Text, View } from "../components/Themed";
+import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
 import { RootStackScreenProps } from "../types/navigation";
 import React, { useState, useEffect, Component } from "react";
 import { useNavigation } from "@react-navigation/core";
@@ -43,6 +44,16 @@ const MoodTrackerScreen = ({
     "Sunday",
   ];
 
+  const ordinalSuffix = (day: number) => {
+    if (day > 3 && day < 21) return "th";
+    switch (day % 10) {
+      case 1:  return "st";
+      case 2:  return "nd";
+      case 3:  return "rd";
+      default: return "th";
+    }
+  }
+
   useEffect(() => {
     let today = new Date();
     let monthName = months[today.getMonth()];
@@ -53,7 +64,8 @@ const MoodTrackerScreen = ({
       monthName +
       " " +
       today.getDate() +
-      "nd " +
+      ordinalSuffix(today.getDate()) +
+      " " +
       today.getFullYear();
     setDate(date);
   }, []);
@@ -62,7 +74,7 @@ const MoodTrackerScreen = ({
     if (selected === "") {
       setModalVisible(true);
     } else {
-      Alert.alert("Udahkan?", "", [
+      Alert.alert("Submit the mood?", "", [
         {
           text: "No",
           // onPress: () => setModalVisible(true),
@@ -181,31 +193,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    paddingHorizontal: 95,
+    paddingHorizontal: verticalScale(30),
   },
   title: {
-    fontSize: 66,
+    fontSize: scale(20),
     fontWeight: "bold",
   },
   dateText: {
-    fontSize: 55,
-    fontWeight: "400",
+    fontSize: scale(15),
+    fontWeight: "bold",
     fontStyle: "italic",
   },
   imageOnClick: {
-    borderWidth: 10,
+    borderWidth: scale(5),
     borderColor: "#247CE2",
     borderRadius: 100,
-    width: 150,
-    height: 150,
+    width: scale(70),
+    height: scale(70),
   },
   imageNotOnClick: {
-    width: 150,
-    height: 150,
+    width: scale(69),
+    height: scale(69),
   },
   forms: {
     width: "100%",
-    height: 80,
+    height: 150,
     color: "#7D7D7D",
     padding: 10,
     borderWidth: 1,
@@ -216,43 +228,43 @@ const styles = StyleSheet.create({
     elevation: 8,
     backgroundColor: "#247CE2",
     borderRadius: 10,
-    paddingVertical: 25,
+    paddingVertical: verticalScale(10),
   },
   ButtonText: {
-    fontSize: 50,
+    fontSize: scale(20),
     color: "#fff",
     alignSelf: "center",
   },
   wrapper: {
-    marginVertical: 80,
+    marginVertical: verticalScale(40),
     flexDirection: "row",
     justifyContent: "space-around",
   },
   imageContainer: {
-    marginTop: 80,
-    marginBottom: 30,
+    marginTop: verticalScale(30),
+    marginBottom: verticalScale(12),
     alignItems: "center",
   },
   warningImage: {
-    width: 195,
-    height: 180,
+    width: scale(75),
+    height: scale(70),
   },
   warningTitle: {
-    fontSize: 50,
+    fontSize: scale(20),
     fontWeight: "bold",
     alignSelf: "center",
   },
   warningText: {
-    fontSize: 30,
+    fontSize: scale(15),
     alignSelf: "center",
   },
   warningButton: {
     elevation: 8,
     backgroundColor: "#247CE2",
     borderRadius: 10,
-    paddingVertical: 25,
-    marginVertical: 40,
-    marginHorizontal: 200,
+    paddingVertical: verticalScale(10),
+    marginVertical: verticalScale(15),
+    marginHorizontal: scale(50),
   },
   centeredView: {
     flex: 1,
@@ -261,10 +273,10 @@ const styles = StyleSheet.create({
   },
   modalView: {
     flex: 1,
-    margin: 82,
+    margin: scale(30),
     backgroundColor: "white",
     borderRadius: 20,
-    padding: 35,
+    padding: scale(10),
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
