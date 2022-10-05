@@ -7,6 +7,7 @@ export type RootTabParamList = {
   Home: undefined;
   Activities: undefined;
   Profile: undefined;
+  MoodTracker: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> =

@@ -7,6 +7,7 @@ import { Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import ActivitiesScreen from "../screens/activities/ActivitiesScreen";
 import ProfileScreen from "../screens/profile/ProfileScreen";
+import MoodTrackerScreen from "../screens/MoodTrackerScreen";
 /**
  * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
  * https://reactnavigation.org/docs/bottom-tab-navigator
@@ -18,42 +19,49 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="Home"
+      initialRouteName="MoodTracker"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}
     >
       <BottomTab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={({ navigation }: RootTabScreenProps<"Home">) => ({
-          title: "Home",
-          tabBarIcon: ({ color }) => <HomeIcon name="home" color={color} />,
-          headerRight: () => (
-            <Pressable
-              onPress={() => navigation.navigate("Modal")}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}
-            >
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
-          ),
-        })}
+        name="MoodTracker"
+        component={MoodTrackerScreen}
+        options={{
+          headerShown: false,
+          tabBarShowLabel: false,
+          tabBarIcon: ({ color }) => <HomeIcon name="" color={color} />,
+        }}
+        // options={({ navigation }: RootTabScreenProps<"MoodTrackerScreen">) => ({
+        //   title: "Home",
+        //   tabBarIcon: ({ color }) => <HomeIcon name="home" color={color} />,
+        //   headerRight: () => (
+        //     <Pressable
+        //       onPress={() => navigation.navigate("Modal")}
+        //       style={({ pressed }) => ({
+        //         opacity: pressed ? 0.5 : 1,
+        //       })}
+        //     >
+        //       <FontAwesome
+        //         name="info-circle"
+        //         size={25}
+        //         color={Colors[colorScheme].text}
+        //         style={{ marginRight: 15 }}
+        //       />
+        //     </Pressable>
+        //   ),
+        // })}
       />
-      <BottomTab.Screen
+      {/* <BottomTab.Screen
         name="Activities"
         component={ActivitiesScreen}
         options={{
           title: "Activities",
-          tabBarIcon: ({ color }) => <ActivityIcon name="clipboard" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <ActivityIcon name="clipboard" color={color} />
+          ),
         }}
-      />
+      /> */}
     </BottomTab.Navigator>
   );
 }
@@ -61,7 +69,7 @@ export default function BottomTabNavigator() {
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
-function  TabBarIcon(props: {
+function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>["name"];
   color: string;
 }) {
