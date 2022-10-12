@@ -7,7 +7,7 @@ import {
   Modal,
 } from "react-native";
 import { Text, View } from "../components/Themed";
-import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
+import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import { RootStackScreenProps } from "../types/navigation";
 import React, { useState, useEffect, Component } from "react";
 import { useNavigation } from "@react-navigation/core";
@@ -18,6 +18,7 @@ const MoodTrackerScreen = ({
   const nav = useNavigation();
   const [date, setDate] = useState("");
   const [selected, setSelected] = useState("");
+  const [moodValue, setMoodValue] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
   let months = [
     "January",
@@ -47,12 +48,37 @@ const MoodTrackerScreen = ({
   const ordinalSuffix = (day: number) => {
     if (day > 3 && day < 21) return "th";
     switch (day % 10) {
-      case 1:  return "st";
-      case 2:  return "nd";
-      case 3:  return "rd";
-      default: return "th";
+      case 1:
+        return "st";
+      case 2:
+        return "nd";
+      case 3:
+        return "rd";
+      default:
+        return "th";
     }
+  };
+
+  const postURL = "https://backend-deco.herokuapp.com/api/v1/user-emoji/";
+
+  enum MoodValue {
+    Happy = 1,
+    Sad,
+    Angry,
+    Neutral,
+    Ecstatic,
   }
+
+  // async function postData(url = "", data = {}) {
+  //   const response = await fetch(url, {
+  //     method: "POST", // *GET, POST, PUT, DELETE, etc.
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(data), 
+  //   });
+  //   return response.json(); // parses JSON response into native JavaScript objects
+  // }
 
   useEffect(() => {
     let today = new Date();
@@ -84,18 +110,60 @@ const MoodTrackerScreen = ({
         {
           text: "Yes",
           // onPress: () => console.log("pressed"),
-          onPress: () => nav.navigate("Submitted"),
+          onPress: () => {
+            const formData = new FormData();
+            formData.append("emoji", moodValue.toString())
+            nav.navigate("Submitted");
+            fetch(postURL, {
+              method: "POST",
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+              body: formData,
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                console.log("Success:", data);
+              })
+              .catch((error) => {
+                console.error("Error:", error);
+              });
+          },
         },
       ]);
     }
   };
+
+  // async function postData() {
+  //   const postData = {
+  //     emoji: moodValue,
+  //   };
+
+  //   try {
+  //     const response = await fetch(postURL, {
+  //       method: "post",
+  //       headers: {
+  //       "Content-Type": "application/json",
+  //       "x-access-token": "token-value",
+  //     },
+  //     body: JSON.stringify(postData),
+  //     })
+  //   } catch {
+
+  //   }
+  // }
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>How are you feeling today?</Text>
       <Text style={styles.dateText}>{date}</Text>
       <View style={styles.wrapper}>
-        <TouchableOpacity onPress={() => setSelected("angry")}>
+        <TouchableOpacity
+          onPress={() => {
+            setSelected("angry");
+            setMoodValue(MoodValue.Angry);
+          }}
+        >
           <Image
             style={
               selected === "angry"
@@ -105,7 +173,12 @@ const MoodTrackerScreen = ({
             source={require("../assets/images/Angry.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => setSelected("sad")}>
+        <TouchableOpacity
+          onPress={() => {
+            setSelected("sad");
+            setMoodValue(MoodValue.Sad);
+          }}
+        >
           <Image
             style={
               selected === "sad" ? styles.imageOnClick : styles.imageNotOnClick
@@ -113,7 +186,12 @@ const MoodTrackerScreen = ({
             source={require("../assets/images/Sad.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => setSelected("flat")}>
+        <TouchableOpacity
+          onPress={() => {
+            setSelected("flat");
+            setMoodValue(MoodValue.Neutral);
+          }}
+        >
           <Image
             style={
               selected === "flat" ? styles.imageOnClick : styles.imageNotOnClick
@@ -121,7 +199,12 @@ const MoodTrackerScreen = ({
             source={require("../assets/images/Flat.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => setSelected("smile")}>
+        <TouchableOpacity
+          onPress={() => {
+            setSelected("smile");
+            setMoodValue(MoodValue.Happy);
+          }}
+        >
           <Image
             style={
               selected === "smile"
@@ -131,7 +214,12 @@ const MoodTrackerScreen = ({
             source={require("../assets/images/Smile.png")}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => setSelected("happy")}>
+        <TouchableOpacity
+          onPress={() => {
+            setSelected("happy");
+            setMoodValue(MoodValue.Ecstatic);
+          }}
+        >
           <Image
             style={
               selected === "happy"
