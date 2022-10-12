@@ -20,7 +20,6 @@ const OnBoarding = ({ title, subtitle, img }: props) => {
       />
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.subtitle}>{subtitle}</Text>
-      {/*<Button>Aasdasf</Button>*/}
     </View>
   );
 };

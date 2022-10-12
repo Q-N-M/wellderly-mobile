@@ -5,7 +5,6 @@ import MoodTrackerScreen from "../screens/MoodTrackerScreen";
 import SubmittedScreen from "../screens/SubmittedScreen";
 import { RootStackParamList } from "../types/navigation";
 import BottomTabNavigator from "./BottomTabNavigator";
-import AuthStackNavigator from "./AuthStackNavigator";
 
 /**
  * A root stack navigator is often used for displaying modals on top of all other content.
@@ -25,11 +24,6 @@ export default function RootNavigator() {
         name="NotFound"
         component={NotFoundScreen}
         options={{ title: "Oops!" }}
-      />
-      <RootStack.Screen
-        name="Auth"
-        component={AuthStackNavigator}
-        options={{ headerShown: false }}
       />
       <RootStack.Screen
         name="MoodTracker"
