@@ -1,21 +1,26 @@
 import { TouchableOpacity, StyleSheet, Image } from "react-native";
 import { Text, View } from "../components/Themed";
 import { RootStackScreenProps } from "../types/navigation";
-import React, { useState, useEffect, Component } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/core";
-import MoodTracker from "./MoodTrackerScreen";
 import { scale } from "react-native-size-matters";
+import { useIsFocused } from "@react-navigation/native";
 
 const SubmittedScreen = ({ navigation }: RootStackScreenProps<"Submitted">) => {
   const nav = useNavigation();
-  const [number, setNumber] = useState(5);
-  const time = setTimeout(() => {
-    nav.navigate("MoodTracker");
-  }, 6000);
-  // clearTimeout(time);
-  setTimeout(() => {
-    setNumber(number - 1);
-  }, 1000);
+  const isFocused = useIsFocused();
+
+  useEffect(() => {
+    let time: NodeJS.Timeout | undefined;
+    if (isFocused) {
+      time = setTimeout(() => {
+        nav.navigate("MoodTracker");
+      }, 3000);
+    }
+    return () => {
+      clearTimeout(time);
+    };
+  }, [isFocused]);
 
   return (
     <View style={styles.container}>
@@ -26,13 +31,6 @@ const SubmittedScreen = ({ navigation }: RootStackScreenProps<"Submitted">) => {
         />
       </View>
       <Text style={styles.title}>You have submitted your mood of the day!</Text>
-      {/* <Text style={styles.timer}>{number}</Text> */}
-      {/* <TouchableOpacity
-        style={styles.buttonContainer}
-        onPress={() => nav.navigate("MoodTracker")}
-      >
-        <Text style={styles.ButtonText}>-_-</Text>
-      </TouchableOpacity> */}
     </View>
   );
 };

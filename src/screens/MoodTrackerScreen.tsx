@@ -1,15 +1,14 @@
 import {
   TouchableOpacity,
   StyleSheet,
-  TextInput,
   Image,
   Alert,
   Modal,
 } from "react-native";
 import { Text, View } from "../components/Themed";
-import { scale, verticalScale, moderateScale } from "react-native-size-matters";
+import { scale, verticalScale } from "react-native-size-matters";
 import { RootStackScreenProps } from "../types/navigation";
-import React, { useState, useEffect, Component } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/core";
 
 const MoodTrackerScreen = ({
@@ -69,17 +68,6 @@ const MoodTrackerScreen = ({
     Ecstatic,
   }
 
-  // async function postData(url = "", data = {}) {
-  //   const response = await fetch(url, {
-  //     method: "POST", // *GET, POST, PUT, DELETE, etc.
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(data), 
-  //   });
-  //   return response.json(); // parses JSON response into native JavaScript objects
-  // }
-
   useEffect(() => {
     let today = new Date();
     let monthName = months[today.getMonth()];
@@ -103,16 +91,13 @@ const MoodTrackerScreen = ({
       Alert.alert("Submit the mood?", "", [
         {
           text: "No",
-          // onPress: () => setModalVisible(true),
-          onPress: () => console.log(selected),
           style: "cancel",
         },
         {
           text: "Yes",
-          // onPress: () => console.log("pressed"),
           onPress: () => {
             const formData = new FormData();
-            formData.append("emoji", moodValue.toString())
+            formData.append("emoji", moodValue.toString());
             nav.navigate("Submitted");
             fetch(postURL, {
               method: "POST",
@@ -120,38 +105,12 @@ const MoodTrackerScreen = ({
                 "Content-Type": "multipart/form-data",
               },
               body: formData,
-            })
-              .then((response) => response.json())
-              .then((data) => {
-                console.log("Success:", data);
-              })
-              .catch((error) => {
-                console.error("Error:", error);
-              });
+            }).then((response) => response.json());
           },
         },
       ]);
     }
   };
-
-  // async function postData() {
-  //   const postData = {
-  //     emoji: moodValue,
-  //   };
-
-  //   try {
-  //     const response = await fetch(postURL, {
-  //       method: "post",
-  //       headers: {
-  //       "Content-Type": "application/json",
-  //       "x-access-token": "token-value",
-  //     },
-  //     body: JSON.stringify(postData),
-  //     })
-  //   } catch {
-
-  //   }
-  // }
 
   return (
     <View style={styles.container}>
@@ -230,14 +189,6 @@ const MoodTrackerScreen = ({
           />
         </TouchableOpacity>
       </View>
-      {/* <Text style={styles.title}>Can you tell us about it?</Text>
-      <View>
-        <TextInput
-          style={styles.forms}
-          placeholder="Type a message..."
-          multiline={true}
-        />
-      </View> */}
       <TouchableOpacity style={styles.buttonContainer} onPress={handlePress}>
         <Text style={styles.ButtonText}>Submit</Text>
       </TouchableOpacity>
