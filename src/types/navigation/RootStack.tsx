@@ -1,12 +1,11 @@
 import { NavigatorScreenParams } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootTabParamList, AuthStackParamList } from ".";
+import { RootTabParamList } from ".";
 
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
   Modal: undefined;
   NotFound: undefined;
-  Auth: NavigatorScreenParams<AuthStackParamList>;
   MoodTracker: undefined;
   Submitted: undefined;
 };

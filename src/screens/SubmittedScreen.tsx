@@ -1,7 +1,7 @@
-import { TouchableOpacity, StyleSheet, Image } from "react-native";
+import { StyleSheet, Image } from "react-native";
 import { Text, View } from "../components/Themed";
 import { RootStackScreenProps } from "../types/navigation";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigation } from "@react-navigation/core";
 import { scale } from "react-native-size-matters";
 import { useIsFocused } from "@react-navigation/native";

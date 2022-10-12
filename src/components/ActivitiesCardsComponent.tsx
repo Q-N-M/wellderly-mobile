@@ -1,10 +1,10 @@
 import React from "react";
-import { View, ScrollView, StyleSheet, Image } from "react-native";
-import { Text, Card, Button, Icon } from "@rneui/themed";
+import { StyleSheet } from "react-native";
+import { Text, Card } from "@rneui/themed";
 
 export default function ActivitiesCardsComponent(props) {
   return (
-    <Card containerStyle={{borderRadius: 20}}>
+    <Card containerStyle={{ borderRadius: 20 }}>
       <Card.Title>{props.name}</Card.Title>
       <Card.Divider />
       <Card.Image
@@ -13,10 +13,7 @@ export default function ActivitiesCardsComponent(props) {
           uri: props.image,
         }}
       />
-      {/* <View style={styles.activityStyle}> */}
-        <Text style={styles.name}>{props.description}</Text>
-        {/* <Text style={styles.name}>{props.id}</Text> */}
-      {/* </View> */}
+      <Text style={styles.name}>{props.description}</Text>
     </Card>
   );
 }
