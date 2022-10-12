@@ -69,6 +69,17 @@ const MoodTrackerScreen = ({
     Ecstatic,
   }
 
+  // async function postData(url = "", data = {}) {
+  //   const response = await fetch(url, {
+  //     method: "POST", // *GET, POST, PUT, DELETE, etc.
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(data), 
+  //   });
+  //   return response.json(); // parses JSON response into native JavaScript objects
+  // }
+
   useEffect(() => {
     let today = new Date();
     let monthName = months[today.getMonth()];
@@ -85,12 +96,6 @@ const MoodTrackerScreen = ({
     setDate(date);
   }, []);
 
-  const postData = {
-    emoji: moodValue,
-  };
-
-  console.log(JSON.stringify(postData))
-
   const handlePress = () => {
     if (selected === "") {
       setModalVisible(true);
@@ -106,20 +111,23 @@ const MoodTrackerScreen = ({
           text: "Yes",
           // onPress: () => console.log("pressed"),
           onPress: () => {
+            const formData = new FormData();
+            formData.append("emoji", moodValue.toString())
             nav.navigate("Submitted");
             fetch(postURL, {
               method: "POST",
               headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "multipart/form-data",
               },
-              body: JSON.stringify(postData),
-            }).then((response) => response.json())
-            .then((postData) => {
-              console.log('Success:', postData);
+              body: formData,
             })
-            .catch((error) => {
-              console.error('Error:', error);
-            });
+              .then((response) => response.json())
+              .then((data) => {
+                console.log("Success:", data);
+              })
+              .catch((error) => {
+                console.error("Error:", error);
+              });
           },
         },
       ]);
