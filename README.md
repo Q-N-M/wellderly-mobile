@@ -2,9 +2,9 @@
 Moodtracker input for the interactive display. The app is intended for tablet such as Ipad.
 
 ## Installation
-git clone https://github.com/Q-N-M/wellderly-mobile.git
-cd wellderly-mobile
-npm install
+1. git clone https://github.com/Q-N-M/wellderly-mobile.git
+2. cd wellderly-mobile
+3. npm install
 
 ## How to run the app on your mobile device
 1. Install expo go on your mobile device
