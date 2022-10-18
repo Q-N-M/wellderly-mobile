@@ -1,38 +1,23 @@
-/**
- * Learn more about deep linking with React Navigation
- * https://reactnavigation.org/docs/deep-linking
- * https://reactnavigation.org/docs/configuring-links
- */
-
 import { LinkingOptions } from '@react-navigation/native';
 import * as Linking from 'expo-linking';
-
 import { RootStackParamList } from '../types/navigation';
 
+/**
+ * This is used to make the moodtracker screen as the first page that will be opened
+ */
 const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.createURL('/')],
   config: {
     screens: {
       Root: {
         screens: {
-          Home: {
+          MoodTracker: {
             screens: {
-              HomeScreen: 'one',
-            },
-          },
-          Activities: {
-            screens: {
-              ActivitiesScreen: 'two',
-            },
-          },
-          Profile: {
-            screens: {
-              ProfileScreen: 'three',
+              MoodTracker: 'one',
             },
           },
         },
       },
-      Modal: 'modal',
       NotFound: '*',
     },
   },

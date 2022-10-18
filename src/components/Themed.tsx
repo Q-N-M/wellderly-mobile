@@ -8,6 +8,10 @@ import { Text as DefaultText, View as DefaultView } from "react-native";
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 
+
+/**
+ * This function is used to change to light and dark mode depending on the system's setting
+ */
 export function useThemeColor(
   props: { light?: string; dark?: string },
   colorName: keyof typeof Colors.light & keyof typeof Colors.dark
