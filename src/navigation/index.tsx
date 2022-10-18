@@ -1,8 +1,3 @@
-/**
- * If you are not familiar with React Navigation, refer to the "Fundamentals" guide:
- * https://reactnavigation.org/docs/getting-started
- *
- */
 import {
   NavigationContainer,
   DefaultTheme,
@@ -13,6 +8,11 @@ import { ColorSchemeName } from "react-native";
 import LinkingConfiguration from "./LinkingConfiguration";
 import RootNavigator from "./RootNavigator";
 
+/**
+ * This function is used to call linking configuration
+ * @param param0 
+ * @returns 
+ */
 export default function Navigation({
   colorScheme,
 }: {

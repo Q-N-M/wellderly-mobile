@@ -26,7 +26,7 @@ export default function BottomTabNavigator() {
         options={{
           headerShown: false,
           tabBarShowLabel: false,
-          tabBarIcon: ({ color }) => <HomeIcon name="" color={color} />,
+          tabBarIcon: ({ color }) => <HomeIcon color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -34,10 +34,9 @@ export default function BottomTabNavigator() {
 }
 
 /**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
+ * built-in icon families and icons on the web at https://icons.expo.fyi/
  */
 function HomeIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>["name"];
   color: string;
 }) {
   return <FontAwesome size={24} {...props} />;

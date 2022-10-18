@@ -1,5 +1,4 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import MoodTrackerScreen from "../screens/MoodTrackerScreen";
 import SubmittedScreen from "../screens/SubmittedScreen";
@@ -35,10 +34,6 @@ export default function RootNavigator() {
         component={SubmittedScreen}
         options={{ headerShown: false }}
       />
-
-      <RootStack.Group screenOptions={{ presentation: "modal" }}>
-        <RootStack.Screen name="Modal" component={ModalScreen} />
-      </RootStack.Group>
     </RootStack.Navigator>
   );
 }

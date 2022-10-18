@@ -11,14 +11,19 @@ import { RootStackScreenProps } from "../types/navigation";
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/core";
 
+/**
+ * This screen is used for the user input to input their mood
+ */
 const MoodTrackerScreen = ({
   navigation,
 }: RootStackScreenProps<"MoodTracker">) => {
+  // These are the states that will be used in the code
   const nav = useNavigation();
   const [date, setDate] = useState("");
   const [selected, setSelected] = useState("");
   const [moodValue, setMoodValue] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
+  
   let months = [
     "January",
     "February",
@@ -44,6 +49,11 @@ const MoodTrackerScreen = ({
     "Sunday",
   ];
 
+  /**
+   * This function is used to add suffix to the date
+   * @param day date number from 1 to 31
+   * @returns suffix string
+   */
   const ordinalSuffix = (day: number) => {
     if (day > 3 && day < 21) return "th";
     switch (day % 10) {
@@ -60,6 +70,9 @@ const MoodTrackerScreen = ({
 
   const postURL = "https://backend-deco.herokuapp.com/api/v1/user-emoji/";
 
+  /**
+   * This enum is used to set a number to a mood according to the backend value.
+   */
   enum MoodValue {
     Happy = 1,
     Sad,
@@ -68,6 +81,9 @@ const MoodTrackerScreen = ({
     Ecstatic,
   }
 
+  /**
+   * This is used to get the current date
+   */
   useEffect(() => {
     let today = new Date();
     let monthName = months[today.getMonth()];
@@ -84,6 +100,12 @@ const MoodTrackerScreen = ({
     setDate(date);
   }, []);
 
+  /**
+   * This function is called when the submit button is pressed.
+   * If the user didn't select any emoji, it will show the modal alert.
+   * Else it will show the confirmation alert and if the user press yes, 
+   * it will post the data to the database according to the chosen emoji.
+   */
   const handlePress = () => {
     if (selected === "") {
       setModalVisible(true);

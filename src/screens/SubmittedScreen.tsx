@@ -6,10 +6,16 @@ import { useNavigation } from "@react-navigation/core";
 import { scale } from "react-native-size-matters";
 import { useIsFocused } from "@react-navigation/native";
 
+/**
+ * This screen is used to show submitted screen after user press submit screen in the moodtracker screen.
+ */
 const SubmittedScreen = ({ navigation }: RootStackScreenProps<"Submitted">) => {
   const nav = useNavigation();
   const isFocused = useIsFocused();
 
+  /**
+   * This is used to redirect the screen back to the moodtracker screen after 3 seconds.
+   */
   useEffect(() => {
     let time: NodeJS.Timeout | undefined;
     if (isFocused) {

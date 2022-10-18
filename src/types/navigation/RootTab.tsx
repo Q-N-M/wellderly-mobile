@@ -1,12 +1,13 @@
+/**
+ * This file is used to define RootTabParamList and RootTabScreenProps
+ */
+
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
 import { CompositeScreenProps } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "./RootStack";
 
 export type RootTabParamList = {
-  Home: undefined;
-  Activities: undefined;
-  Profile: undefined;
   MoodTracker: undefined;
 };
 
